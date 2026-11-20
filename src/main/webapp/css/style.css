@@ -1,0 +1,41 @@
+/*
+ * Layout, colours and components are styled with Tailwind CSS (CDN) in the JSPs,
+ * using the "forest" theme from js/tailwind.config.js.
+ * This file only holds the print rules that make the generated CV A4 and printer friendly.
+ */
+
+@page {
+    size: A4;
+    margin: 0;
+}
+
+@media print {
+    body {
+        background: #ffffff !important;
+        /* Keep the dark green header band and accents when printing / saving as PDF */
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* Toolbar, badges and buttons are screen-only */
+    .no-print {
+        display: none !important;
+    }
+
+    /* The CV fills the page without the on-screen card look */
+    .cv-sheet {
+        box-shadow: none !important;
+        margin: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+
+    /* Avoid splitting a section across two pages */
+    .cv-section {
+        break-inside: avoid;
+    }
+
+    a {
+        color: inherit !important;
+    }
+}

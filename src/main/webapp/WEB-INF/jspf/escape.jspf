@@ -1,0 +1,14 @@
+<%-- Shared helper, pulled into JSPs with <%@ include %>.
+     Escapes user text before printing it into HTML, so characters like < > " & cannot break the page. --%>
+<%!
+    private String esc(String value) {
+        if (value == null) {
+            return "";
+        }
+        return value.replace("&", "&amp;")
+                    .replace("<", "&lt;")
+                    .replace(">", "&gt;")
+                    .replace("\"", "&quot;")
+                    .replace("'", "&#39;");
+    }
+%>
